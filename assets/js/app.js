@@ -146,7 +146,6 @@ gsap.set([gallery], {
 });
 
 
-
 gsap.to(gallery, {
   scale: 3.4,
   scrollTrigger: {
