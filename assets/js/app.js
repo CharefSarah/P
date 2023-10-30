@@ -1,4 +1,3 @@
-
 document.documentElement.style.overflow = "hidden";
 document.body.style.overflow = "hidden";
 // Définition des variables et initialisation de l'animation SplitType
@@ -120,11 +119,11 @@ window.onload = function () {
     ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
     y: -20
   });
-  
+
   // Animer chaque lien individuellement
   links.forEach((link, index) => {
     gsap.from(link, {
-      delay: 1 + index * 0.2,
+      delay: 0.5 + index * 0.2,
       duration: 0.2,
       autoAlpha: 0,
       ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
@@ -202,48 +201,15 @@ gsap.fromTo(".project", {
   y: "-200vh",
   duration: 15000, // Ajustez selon vos besoins
   stagger: {
-      amount: 9000, // Ajustez selon vos besoins
-      each: 1000  // Ajustez selon vos besoins
+    amount: 9000, // Ajustez selon vos besoins
+    each: 1000 // Ajustez selon vos besoins
   },
-  
+
   scrollTrigger: {
-      trigger: ".gallery__portfolio__projet",
-      start: "top top",
-      end: "60% -180%" + (window.innerHeight * 100),
-      scrub: 1, // Suivi du défilement
-      pin: true, // Épingler la section
+    trigger: ".gallery__portfolio__projet",
+    start: "top top",
+    end: "60% -180%" + (window.innerHeight * 100),
+    scrub: 1, // Suivi du défilement
+    pin: true, // Épingler la section
   }
 });
-
-
-//  function Marquee(selector, speed) {
-//  const parentSelector = document.querySelector(selector);
-//  const clone = parentSelector.innerHTML;
-//  const firstElement = parentSelector.children[0];
-//  let i = 0;
-//  let marqueeInterval;
-
-//  parentSelector.insertAdjacentHTML('beforeend', clone);
-//  parentSelector.insertAdjacentHTML('beforeend', clone);
-
-//  function startMarquee() {
-//  marqueeInterval = setInterval(function () {
-// firstElement.style.marginLeft = `-${i}px`;
-// if (i > firstElement.clientWidth) {
-//  i = 0;
-// }
-// i = i + speed;
-//  }, 0);
-// }
-
-//  function stopMarquee() {
-//    clearInterval(marqueeInterval);
-//  }
-
-// parentSelector.addEventListener('mouseenter', stopMarquee);
-//  parentSelector.addEventListener('mouseleave', startMarquee);
-
-// startMarquee();
-// }
-
-// window.addEventListener('load', () => Marquee('.marquee', 0.4));
