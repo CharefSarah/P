@@ -1,3 +1,6 @@
+gsap.registerPlugin(ScrollTrigger, CustomEase);
+
+
 document.documentElement.style.overflow = "hidden";
 document.body.style.overflow = "hidden";
 // Définition des variables et initialisation de l'animation SplitType
@@ -7,41 +10,45 @@ function runSplit() {
   typeSplit = new SplitType(".split__lines", {
     types: "lines, words"
   });
-  $(".line").append("<div class='line__mask'></div>");
+  document.querySelectorAll('.line').forEach(function (line) {
+    line.insertAdjacentHTML('beforeend', "<div class='line__mask'></div>");
+  });
   createAnimation();
 }
 
 // Gestion du redimensionnement de la fenêtre
-let windowWidth = $(window).innerWidth();
+let windowWidth = window.innerWidth;
 window.addEventListener("resize", function () {
-  if (windowWidth !== $(window).innerWidth()) {
-    windowWidth = $(window).innerWidth();
+  if (windowWidth !== window.innerWidth) {
+    windowWidth = window.innerWidth;
     typeSplit.revert();
     runSplit();
   }
 });
 
+
 // Création de l'animation avec GSAP et ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 function createAnimation() {
-  $(".line").each(function (index) {
+  document.querySelectorAll(".line").forEach((element, index) => {
     let tl = gsap.timeline({
       scrollTrigger: {
-        trigger: $(this),
+        trigger: element,
         start: "top 40%",
         end: "bottom bottom",
         scrub: 3
       }
     });
     let delay = index * 10;
-    tl.to($(this).find(".line__mask"), {
+    tl.to(element.querySelector(".line__mask"), {
       width: "0%",
       duration: 9,
       delay: delay
     });
   });
 }
+
 
 window.onload = function () {
   runSplit();
@@ -194,21 +201,5 @@ gsap.to(gallery.style, {
   }
 });
 
-gsap.fromTo(".project", {
-  y: "100vh"
-}, {
-  y: "-200vh",
-  duration: 15000, // Ajustez selon vos besoins
-  stagger: {
-    amount: 9000, // Ajustez selon vos besoins
-    each: 1000 // Ajustez selon vos besoins
-  },
 
-  scrollTrigger: {
-    trigger: ".gallery__portfolio__projet",
-    start: "top top",
-    end: "60% -180%" + (window.innerHeight * 100),
-    scrub: 1, // Suivi du défilement
-    pin: true, // Épingler la section
-  }
-});
+
