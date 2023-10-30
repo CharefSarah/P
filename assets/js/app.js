@@ -1,19 +1,3 @@
-const x1 = window.innerWidth / 2;
-const y1 = window.innerHeight * 0.7; // Position verticale de la flèche (70% du haut de la fenêtre)
-const PI = Math.PI;
-const arrow = document.querySelector('.arrow');
-
-document.onmousemove = (e) => {
-    let x2 = e.pageX;
-    let y2 = e.pageY;
-    let angle = Math.atan2(y2 - y1, x2 - x1) * (180 / PI);
-
-    // Ajuster l'angle pour qu'il soit toujours positif
-    angle = (angle + 360) % 360;
-
-    arrow.style.transform = `rotate(${angle}deg)`;
-}
-
 
 document.documentElement.style.overflow = "hidden";
 document.body.style.overflow = "hidden";
@@ -48,13 +32,13 @@ function createAnimation() {
         trigger: $(this),
         start: "top 40%",
         end: "bottom bottom",
-        scrub: 0.7
+        scrub: 3
       }
     });
     let delay = index * 10;
     tl.to($(this).find(".line__mask"), {
       width: "0%",
-      duration: 7,
+      duration: 9,
       delay: delay
     });
   });
@@ -70,6 +54,7 @@ window.onload = function () {
   const links = document.querySelectorAll('li a');
   const small = document.querySelectorAll(' h3');
   const galleryContainer = document.querySelector('.scroll__container'); // Container de la galerie
+  const projetprestext = document.querySelectorAll('.projet__pres__text');
 
 
   // Commencez l'animation pour le h2 dès que la page est chargée
@@ -77,22 +62,22 @@ window.onload = function () {
     rotateX: 0,
     translateY: 0,
     delay: 1,
-    duration: .7,
+    duration: 0.8,
     stagger: .02,
     opacity: 1,
     ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
   });
 
   gsap.from(h1, {
-    delay: 0.8,
-    duration: 0.3,
+    delay: 0.5,
+    duration: 0.2,
     autoAlpha: 0,
     ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
     y: -20
   });
   gsap.from(small, {
-    delay: 2.2,
-    duration: .7,
+    delay: 1.5,
+    duration: .3,
     autoAlpha: 0,
     stagger: .02,
     opacity: 1,
@@ -101,39 +86,46 @@ window.onload = function () {
   });
 
   gsap.from(circle, {
-    delay: 2.9,
+    delay: 2,
     duration: .7,
     autoAlpha: 0,
     stagger: .02,
     opacity: 1,
     ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
     y: -20,
-    onComplete: function() {
+    onComplete: function () {
       document.documentElement.style.overflow = "auto";
       document.body.style.overflow = "auto";
     }
-});
+  });
 
   gsap.from(galleryContainer, {
-    delay: 2.6,
+    delay: 2.1,
     duration: .7,
     autoAlpha: 0,
     stagger: .02,
     opacity: 1,
     ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
     y: -20,
-    onComplete: function() {
+    onComplete: function () {
       document.documentElement.style.overflow = "auto";
       document.body.style.overflow = "auto";
     }
-});
+  });
 
-
+  gsap.from(projetprestext, {
+    delay: 1.5,
+    duration: 0.5,
+    autoAlpha: 0,
+    ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
+    y: -20
+  });
+  
   // Animer chaque lien individuellement
   links.forEach((link, index) => {
     gsap.from(link, {
-      delay: 2.4 + index * 0.2,
-      duration: 0.5,
+      delay: 1 + index * 0.2,
+      duration: 0.2,
       autoAlpha: 0,
       ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
       y: -20
@@ -150,21 +142,23 @@ const images = document.querySelectorAll('.img__gallery');
 const gallery = document.querySelector('.parent');
 const middleImage = document.querySelector('.div2');
 
-gsap.set([gallery], { scale: 1 });
+gsap.set([gallery], {
+  scale: 1
+});
 
 
 
 gsap.to(gallery, {
-  scale: 3.3,
+  scale: 3.4,
   scrollTrigger: {
     trigger: scrollContainer,
     start: 'top top',
     end: 'bottom -10%',
     pin: true,
-    ease:  "power2",
-    scrub: 1,  // Change this to 0.5
+    ease: "power2",
+    scrub: 1, // Change this to 0.5
     immediateRender: false,
-    
+
   },
 });
 
@@ -175,30 +169,30 @@ images.forEach((img) => {
       trigger: scrollContainer,
       start: 'top top',
       end: 'bottom -1O%',
-      scrub: 1,  
+      scrub: 1,
       immediateRender: false,
-    
-    
+
+
     },
   });
 });
 
 // Ici on défini la valeur minimale et maximale pour --gap
-const minGap = 30; 
+const minGap = 30;
 const maxGap = 50;
 
 gsap.to(gallery.style, {
-  "--gap": maxGap,  // On définit la valeur finale de --gap
+  "--gap": maxGap, // On définit la valeur finale de --gap
   scrollTrigger: {
     trigger: scrollContainer,
-    start: "top top", 
-    end: "bottom bottom",
+    start: "top 0%",
+    end: "80% 80%",
     onUpdate: self => {
       // On change la valeur de --gap en fonction de la progression du défilement
       const newGap = minGap + (self.progress * (maxGap - minGap));
       gallery.style.setProperty('--gap', `${newGap}px`);
     },
-    scrub: 0.5,  // Change this to 0.5
+    scrub: 0.5, // Change this to 0.5
   }
 });
 
@@ -206,52 +200,50 @@ gsap.fromTo(".project", {
   y: "100vh"
 }, {
   y: "-200vh",
-  duration: 10000, // Ajustez selon vos besoins
+  duration: 15000, // Ajustez selon vos besoins
   stagger: {
-      amount: 5000, // Ajustez selon vos besoins
+      amount: 9000, // Ajustez selon vos besoins
       each: 1000  // Ajustez selon vos besoins
   },
   
   scrollTrigger: {
       trigger: ".gallery__portfolio__projet",
       start: "top top",
-      end: "bottom +=20%" + (window.innerHeight * 300),
+      end: "60% -180%" + (window.innerHeight * 100),
       scrub: 1, // Suivi du défilement
       pin: true, // Épingler la section
   }
 });
 
 
+//  function Marquee(selector, speed) {
+//  const parentSelector = document.querySelector(selector);
+//  const clone = parentSelector.innerHTML;
+//  const firstElement = parentSelector.children[0];
+//  let i = 0;
+//  let marqueeInterval;
 
+//  parentSelector.insertAdjacentHTML('beforeend', clone);
+//  parentSelector.insertAdjacentHTML('beforeend', clone);
 
-function Marquee(selector, speed) {
-  const parentSelector = document.querySelector(selector);
-  const clone = parentSelector.innerHTML;
-  const firstElement = parentSelector.children[0];
-  let i = 0;
-  let marqueeInterval;
+//  function startMarquee() {
+//  marqueeInterval = setInterval(function () {
+// firstElement.style.marginLeft = `-${i}px`;
+// if (i > firstElement.clientWidth) {
+//  i = 0;
+// }
+// i = i + speed;
+//  }, 0);
+// }
 
-  parentSelector.insertAdjacentHTML('beforeend', clone);
-  parentSelector.insertAdjacentHTML('beforeend', clone);
+//  function stopMarquee() {
+//    clearInterval(marqueeInterval);
+//  }
 
-  function startMarquee() {
-    marqueeInterval = setInterval(function () {
-      firstElement.style.marginLeft = `-${i}px`;
-      if (i > firstElement.clientWidth) {
-        i = 0;
-      }
-      i = i + speed;
-    }, 0);
-  }
+// parentSelector.addEventListener('mouseenter', stopMarquee);
+//  parentSelector.addEventListener('mouseleave', startMarquee);
 
-  function stopMarquee() {
-    clearInterval(marqueeInterval);
-  }
+// startMarquee();
+// }
 
- parentSelector.addEventListener('mouseenter', stopMarquee);
-  parentSelector.addEventListener('mouseleave', startMarquee);
-
-  startMarquee();
-}
-
-window.addEventListener('load', () => Marquee('.marquee', 0.4));
+// window.addEventListener('load', () => Marquee('.marquee', 0.4));
