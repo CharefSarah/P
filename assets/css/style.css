@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+
 
 }
 
@@ -40,18 +40,19 @@ a {
 
 @media (prefers-color-scheme: dark) {
   :root {
-  
-    --clr_dark: #131316;
-    --clr_mid1: #0f0f10;
+
+    --clr_dark: #0f0f10;
+    --clr_mid1: #0b0b0c;
     --clr_mid2: #868686;
     --clr_mid3: #c2c2c2;
     --clr_light: #F9F9F9;
     --clr_accent: #79f9bf;
-  
+
   }
 
 
 }
+
 @media (prefers-color-scheme: light) {
   :root {
     --clr_light: #0d0d0f;
@@ -61,14 +62,15 @@ a {
     --clr_dark: #F9F9F9;
     --clr_accent: #79f9bf;
     --gap: 30px;
-    
+
   }
-  
+
 }
 
-:root{
+:root {
   --gap: 30px;
 }
+
 ::-webkit-scrollbar {
   width: 0px;
   height: 0px;
@@ -85,7 +87,7 @@ a {
 }
 
 @font-face {
-  font-family: 'Machina' ;
+  font-family: 'Machina';
   src: url("../fonts/PPEditorialOld-Ultralight.otf") format('OpenType');
   font-display: swap;
 }
@@ -144,9 +146,15 @@ a {
 .accent {
   color: var(--clr_accent);
 }
-.black{
-  background-color:  var(--clr_mid1);
+
+.black {
+  background-color: var(--clr_mid1);
 }
+
+.white {
+  background-color: var(--clr_light);
+}
+
 
 
 /* ------------------------------- ISSA Button rotating   !!!!!------------------------------ */
@@ -329,16 +337,16 @@ header {
 header {
   .title {
 
-    font-family: "Machina", sans-serif; 
+    font-family: "Machina", sans-serif;
     color: var(--clr_light);
-    font-size: 6.5rem;
+    font-size: 7rem;
     font-weight: 300;
     width: 100%;
     display: flex;
     flex-direction: row;
     pointer-events: none;
-    padding-right: 0.06em; 
 
+  
   }
 
 }
@@ -373,7 +381,7 @@ header {
   align-items: center;
   justify-content: center;
   line-height: 1;
-  text-align: center!important;
+
 }
 
 
@@ -526,6 +534,7 @@ header {
   z-index: 2;
 
 }
+
 /* ------------------------------- ISSA SECTION PROJET  !!!!!------------------------------ */
 
 .container__slider__parent {
@@ -534,7 +543,7 @@ header {
   align-items: center;
   justify-content: center;
 
- 
+
 }
 
 
@@ -544,7 +553,7 @@ header {
   width: 100%;
   display: flex;
   flex-direction: row;
- 
+
 
 
 }
@@ -571,7 +580,7 @@ header {
   font-weight: 300;
   color: var(--clr_light);
   position: relative;
-  top: 43%
+  top: 60.5%
 }
 
 .container__slider .left ul {
@@ -581,12 +590,16 @@ header {
 
 .container__slider .left ul li {
   display: flex;
-  padding-bottom: 20px;
-  letter-spacing: 0.125em;
+  padding-bottom: 1rem;
   flex-direction: row;
   align-items: center;
   gap: 13px;
   color: var(--clr_mid2);
+
+}
+
+.container__slider .left ul li a {
+ color: var(--clr_mid2);
 }
 
 .container__slider .left ul li .marker {
@@ -610,7 +623,7 @@ header {
   width: 25px;
 }
 
-.container__slider .left ul li .marker.active+p {
+.container__slider .left ul li .marker.active+a {
   color: var(--clr_light);
 }
 
@@ -619,7 +632,7 @@ header {
   margin-left: 30%;
   position: relative;
   overflow-y: hidden;
-  
+
 }
 
 .container__slider .right .img_container {
@@ -628,14 +641,12 @@ header {
   width: 100%;
   height: 100%;
   outline: 2rem solid var(--clr_mid1);
-  
 
- 
 
 }
 
 .container__slider .right .img_0 {
-  background-image: url("../images/gallery/combino.webp");
+  background-image: url("../images/combino/cover.webp");
 }
 
 .container__slider .right .img_1 {
@@ -657,7 +668,6 @@ header {
 .slider__button {
   height: 120px;
   width: 240px;
-  letter-spacing: 0.125em;
   font-size: 1.5rem;
   font-weight: 300;
   position: absolute;
@@ -670,8 +680,8 @@ header {
   line-height: 2.5rem;
 }
 
-.slider__button  {
-  color:  var(--clr_light);
+.slider__button {
+  color: var(--clr_light);
 }
 
 /* ------------------------------- ISSA SECTION Portfolio  !!!!!------------------------------ */
@@ -740,9 +750,7 @@ header {
   will-change: transform;
 
 
-
 }
-
 
 .image1 {
   left: 10%;
@@ -758,7 +766,6 @@ header {
 }
 
 
-
 .image4 {
   left: 5%;
   top: 60%;
@@ -772,15 +779,68 @@ header {
 }
 
 
-
-
-
-
-
-
 /* --------------------------------------------------------------------------------- */
-/* --------------------------------- ISSA PAGE PROJET----------------------------- */
+/* ------------------------------ ISSA SECTION SERVICES--------------------------- */
 /* ------------------------------------------------------------------------------ */
+.section__services{
+  height: 100vh;
+  width: 100%;
+  background-color: var(--clr_light);
+  display: flex;
+  flex-direction: row;
+}
+
+.services__left{
+
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+.services__left h4{
+
+  font-family: "Machina", sans-serif;
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--clr_mid1);
+
+}
+
+.services__left .small__title{
+  color: var(--clr_mid1);
+
+}
+
+.services__left .btn {
+  border: 1px solid var(--clr_mid2);
+  background-color: var(--clr_light);
+  font-weight: 300;
+}
+.services__left .btn:hover {
+  border: 1px solid var(--clr_dark);
+  background-color: var(--clr_dark);
+  font-weight: 300;
+}
+.services__left a {
+  color: var(--clr_mid1);
+  font-weight: 300;
+}
+
+.services__left a:hover {
+  color: var(--clr_light);
+  font-weight: 300;
+}
+
+.services__left p {
+  width: 75%;
+  text-wrap: balance;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  color: var(--clr_dark);
+  margin-bottom: 1.5rem;
+}
 
 .header__projet {
   height: calc(85vh - 13vh);
@@ -827,7 +887,7 @@ header {
 }
 
 .header__projet__right {
-  font-family: "Telegraph" , sans-serif;
+  font-family: "Telegraph", sans-serif;
   padding-top: 3rem;
 
 }
@@ -842,20 +902,22 @@ header {
 
 .header__projet__right li {
   color: var(--clr_mid3);
-  line-height: 1.8rem;
+  margin-bottom: 1rem;
+
 }
 
-.header__projet__right li > a {
+.header__projet__right li>a {
   color: var(--clr_mid3);
 
 }
-.header__projet__right li > a:hover {
+
+.header__projet__right li>a:hover {
   color: var(--clr_light);
 
 }
 
 
-.text__reveal_so{
+.text__reveal_so {
   height: 70vh;
 }
 
@@ -866,17 +928,18 @@ header {
   margin-bottom: 2rem;
 
 }
-.imagecovercombino{
+
+.imagecovercombino {
   background-size: 3;
 }
 
-video{
+video {
 
   width: calc(100% - 12rem);
   margin-left: 6rem;
 }
 
-.image__projet__inline{
+.image__projet__inline {
   height: 75vh;
   width: 100%;
   display: flex;
@@ -887,16 +950,17 @@ video{
   margin-bottom: 2rem;
 
 }
-.image__projet__inline img{
-width: calc(50% - 1rem);
-height: 100%;
-object-fit: cover;
-object-position: center center;
+
+.image__projet__inline img {
+  width: calc(50% - 1rem);
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 
 }
 
 
-.brandidentity{
+.brandidentity {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -905,3 +969,5 @@ object-position: center center;
   justify-content: center;
 
 }
+
+

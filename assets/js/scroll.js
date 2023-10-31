@@ -21,14 +21,11 @@ gsap.to(right__container, {
         trigger: container__parent,
         start: "top top",
         end: `+=${corrected_total_height}`,
-        scrub: 0.1,
+        scrub: 0.002,
         pin: true,
         snap: {
             snapTo: 1 / (img_array.length - 1),
-            duration: 0.010,
-             ease: "power1",
-       
-         
+          
         },
         onUpdate: function (self) {
             let progress = self.progress.toFixed(1);
